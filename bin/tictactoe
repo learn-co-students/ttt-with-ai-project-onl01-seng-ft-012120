@@ -1,3 +1,33 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+def start 
+    puts "Welcome to TicTacToe!"
+    puts "What kind of game do you want to play? 0, 1, or 2 player. Enter 0, 1 or 2:"
+    input = gets.chomp
+    if input == "0" 
+        game = Game.new(Players::Computer.new("X"), Players::Computer.new("O"), Board.new)
+        play_game(game)
+    elsif input == "1" 
+        game = Game.new(Players::Human.new("X"), Players::Computer.new("O"), Board.new)
+        play_game(game)
+    elsif input == "2" 
+        game = Game.new(Players::Human.new("X"), Players::Human.new("O"), Board.new)
+        play_game(game)
+    else 
+        puts "Please make a valid selection"
+        start
+    end
+end
+
+        
+def play_game(game)
+    game.play 
+    puts "To play again say 'yes'"
+    puts "To exit type 'exit' "
+    input = gets.chomp
+    input == "exit" ? exit : start 
+end
+
+
+start
