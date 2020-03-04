@@ -1,3 +1,6 @@
+#hello hello can I get a greeeeen liiiiiight?
+puts 'Greetings TTTer'
+
 class Game
   attr_accessor :board, :player_1, :player_2
   WIN_COMBINATIONS = [
