@@ -1,3 +1,4 @@
+require 'pry'
 class Board
 
     attr_accessor :cells 
@@ -19,7 +20,7 @@ class Board
     end
 
     def full?
-        @cells.none?(" ")
+        @cells.all?("X" || "O") ? true : false 
     end
 
     def turn_count
@@ -40,6 +41,8 @@ class Board
         index = input.to_i - 1 
         if index.between?(0, 8) && !self.taken?(input)
           return true 
+        else 
+            return false
         end
     end
 
@@ -49,9 +52,8 @@ class Board
     end
 
     def update(input, player)
-        index = input.to_i - 1 
-        self.turn_count % 2 == 0 ? player = "X" : player = "O"
-        @cells[index] = player
+        @cells[input.to_i - 1] = player.token
+        #binding.pry
     end
 
 end
